@@ -5,6 +5,8 @@ buildscript {
     ext.hilt_version = '2.48.1'
     ext.moshi_version = '1.14.0'
     ext.arrow_version = '0.9.0'
+    ext.paging3_version = '3.2.1'
+    ext.landscapist_version = '2.2.10'
 }
 
 plugins {
