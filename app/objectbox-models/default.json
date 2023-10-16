@@ -1,0 +1,61 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2267234275392798448",
+      "lastPropertyId": "2:8060800795538243853",
+      "name": "BreedsEntity",
+      "properties": [
+        {
+          "id": "1:4292433049450175019",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8060800795538243853",
+          "name": "data",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:609648448964312666",
+      "lastPropertyId": "3:106374434839843122",
+      "name": "DatabaseInfo",
+      "properties": [
+        {
+          "id": "1:5414422752432747351",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2034617893471556407",
+          "name": "isDBCreated",
+          "type": 1
+        },
+        {
+          "id": "3:106374434839843122",
+          "name": "dbItemCount",
+          "type": 5
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:609648448964312666",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
