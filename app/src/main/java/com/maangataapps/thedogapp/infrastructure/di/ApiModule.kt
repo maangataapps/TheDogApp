@@ -36,4 +36,8 @@ object ApiModule {
     @Provides
     fun providesSearchApi(retrofit: Retrofit): SearchApi = retrofit.create(SearchApi::class.java)
 
+    @Singleton
+    @Provides
+    fun providesDetailsApi(retrofit: Retrofit): DetailsApi = retrofit.create(DetailsApi::class.java)
+
 }
