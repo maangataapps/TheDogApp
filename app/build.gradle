@@ -1,20 +1,31 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+    id 'io.objectbox'
+    id 'kotlinx-serialization'
 }
 
 android {
     namespace 'com.maangataapps.thedogapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.maangataapps.thedogapp"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'DOG_API_KEY', '"live_IehXGjSBWMaQBjj5drSCm2TOfLrnQVqgH4EFXoZ24rW5HL44vkGMs2d2qR6tg7ja"'
+        buildConfigField 'String', 'BASE_URL', '"https://api.thedogapi.com/v1/"'
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
     }
 
     buildTypes {
@@ -23,21 +34,92 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
+
+    buildFeatures {
+        buildConfig = true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.3'
+    }
+
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    // Android & kotlin
+    implementation "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.activity:activity-compose:1.8.0'
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    implementation 'androidx.compose.runtime:runtime-livedata'
+    implementation "androidx.navigation:navigation-compose:2.7.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.ext.retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$rootProject.ext.moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.moshi_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$rootProject.ext.hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$rootProject.ext.hilt_version"
+
+    // Arrow
+    implementation "io.arrow-kt:arrow-core-data:$rootProject.ext.arrow_version"
+    implementation "io.arrow-kt:arrow-effects-data:$rootProject.ext.arrow_version"
+
+    // Glide
+    implementation "com.github.skydoves:landscapist-glide:$rootProject.ext.landscapist_version"
+    implementation "com.github.skydoves:landscapist-placeholder:$rootProject.ext.landscapist_version"
+
+    // Paging3
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.ext.paging3_version"
+    implementation "androidx.paging:paging-compose:$rootProject.ext.paging3_version"
+
+    // ObjectBox
+    implementation "io.objectbox:objectbox-kotlin:$rootProject.ext.objectbox_version"
+    implementation "io.objectbox:objectbox-android:$rootProject.ext.objectbox_version"
+}
+
+kapt {
+    correctErrorTypes = true
 }
