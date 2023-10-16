@@ -20,6 +20,22 @@ object Extensions {
     }
 
     @Composable
+    fun Boolean.IfTrueOrFalse(actionIfTrue: @Composable () -> Unit, actionIfFalse: @Composable () -> Unit) {
+        if (this) {
+            actionIfTrue.invoke()
+        } else {
+            actionIfFalse.invoke()
+        }
+    }
+
+
+    fun String.showTextInSnackbar(scope: CoroutineScope, snackbarHostState: SnackbarHostState) {
+        scope.launch {
+            snackbarHostState.showSnackbar(this@showTextInSnackbar)
+        }
+    }
+
+    @Composable
     fun CardDefaults.defaultCardElevation(): CardElevation {
         return cardElevation(
             defaultElevation = Dimens.Elevation.Normal.dp
