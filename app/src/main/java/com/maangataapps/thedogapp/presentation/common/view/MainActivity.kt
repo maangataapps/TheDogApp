@@ -8,12 +8,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.maangataapps.thedogapp.infrastructure.utils.BREED_ID
 import com.maangataapps.thedogapp.presentation.breedsscreen.view.BreedsScreen
 import com.maangataapps.thedogapp.presentation.breedsscreen.viewmodel.BreedsViewmodel
 import com.maangataapps.thedogapp.presentation.common.view.ui.theme.TheDogAppTheme
+import com.maangataapps.thedogapp.presentation.detailsscreen.view.DetailsScreen
+import com.maangataapps.thedogapp.presentation.detailsscreen.viewmodel.DetailsViewmodel
 import com.maangataapps.thedogapp.presentation.searchscreen.view.SearchScreen
 import com.maangataapps.thedogapp.presentation.searchscreen.viewmodel.SearchViewmodel
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,6 +52,18 @@ class MainActivity : ComponentActivity() {
                                 navigateToBreedsScreen = { navController.navigate(AppScreens.BreedScreenNav.route) },
                                 navigateToSearchScreen = { navController.navigate(AppScreens.SearchScreenNav.route) },
                                 navigateToDetailScreen = { breedId -> navController.navigate(AppScreens.DetailsScreenNav.createRoute(breedId)) },
+                            )
+                        }
+                        composable(
+                            AppScreens.DetailsScreenNav.route,
+                            arguments = listOf(navArgument(BREED_ID) { type = NavType.IntType })
+                        ) { backStackEntry ->
+                            val detailsViewmodel = hiltViewModel<DetailsViewmodel>()
+                            val breedId = backStackEntry.arguments?.getInt(BREED_ID)
+                            requireNotNull(breedId) { "breedId parameter wasn't found. Please make sure it's set!" }
+                            DetailsScreen(
+                                detailsViewmodel = detailsViewmodel,
+                                breedId = breedId
                             )
                         }
                     }
