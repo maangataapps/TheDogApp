@@ -28,4 +28,8 @@ object ApiModule {
     @Provides
     fun providesRetrofit(): Retrofit = getRetrofitBuilder().build()
 
+    @Singleton
+    @Provides
+    fun providesBreedsApi(retrofit: Retrofit): BreedsApi = retrofit.create(BreedsApi::class.java)
+
 }

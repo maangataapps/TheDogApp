@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">The Dog App</string>
-    
+    <string name="title_activity_main">The Dog App</string>
+    <string name="breeds">Breeds</string>
+    <string name="search">Search</string>
+    <string name="loading">Loading</string>
+    <string name="paging_error">There was an error retrieving the pages</string>
 </resources>
