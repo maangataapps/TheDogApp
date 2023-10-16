@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">The Dog App</string>
-
+    <string name="app_name">A App dos Cães</string>
+    <string name="title_activity_main">A App dos Cães</string>
+    <string name="breeds">Raças</string>
+    <string name="search">Pesquisar</string>
+    <string name="loading">A carregar</string>
+    <string name="paging_error">Ocorreu um erro ao recuperar as páginas</string>
 
 </resources>
