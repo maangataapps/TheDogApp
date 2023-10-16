@@ -8,11 +8,13 @@ import com.maangataapps.thedogapp.data.local.model.database.DatabaseInfo
 import com.maangataapps.thedogapp.domain.model.breeds.Breed
 import com.maangataapps.thedogapp.domain.repository.breeds.BreedsRepository
 import com.maangataapps.thedogapp.infrastructure.utils.LIMIT_HITS
+import com.maangataapps.thedogapp.infrastructure.utils.NetworkUtils
 import com.maangataapps.thedogapp.infrastructure.utils.mapToEntity
 import javax.inject.Inject
 
 class BreedsRepositoryImpl @Inject constructor(
     private val api: BreedsApi,
+    private val networkUtils: NetworkUtils,
 ): BreedsRepository {
 
     override fun getAllBreedsListAndSaveItToLocal() {
@@ -37,7 +39,7 @@ class BreedsRepositoryImpl @Inject constructor(
 
     override fun getBreedsList(): Pager<Int, Breed> = Pager (
         config = PagingConfig(pageSize = LIMIT_HITS, enablePlaceholders = true),
-        pagingSourceFactory = { BreedsPaginatingSource(api) }
+        pagingSourceFactory = { BreedsPaginatingSource(api, networkUtils) }
     )
 
 }
