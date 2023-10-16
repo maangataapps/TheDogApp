@@ -5,5 +5,8 @@
     <string name="search">Pesquisar</string>
     <string name="loading">A carregar</string>
     <string name="paging_error">Ocorreu um erro ao recuperar as páginas</string>
+    <string name="breed_not_found">Raça não encontrada</string>
+    <string name="search_hint">Digite aqui a raça</string>
+    <string name="no_search">Ainda não há informações. Procure por uma raça de que goste!</string>
 
 </resources>

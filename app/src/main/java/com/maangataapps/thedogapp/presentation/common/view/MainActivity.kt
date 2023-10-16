@@ -14,6 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import com.maangataapps.thedogapp.presentation.breedsscreen.view.BreedsScreen
 import com.maangataapps.thedogapp.presentation.breedsscreen.viewmodel.BreedsViewmodel
 import com.maangataapps.thedogapp.presentation.common.view.ui.theme.TheDogAppTheme
+import com.maangataapps.thedogapp.presentation.searchscreen.view.SearchScreen
+import com.maangataapps.thedogapp.presentation.searchscreen.viewmodel.SearchViewmodel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,6 +35,15 @@ class MainActivity : ComponentActivity() {
                             val breedsViewModel = hiltViewModel<BreedsViewmodel>()
                             BreedsScreen(
                                 viewModel = breedsViewModel,
+                                navigateToBreedsScreen = { navController.navigate(AppScreens.BreedScreenNav.route) },
+                                navigateToSearchScreen = { navController.navigate(AppScreens.SearchScreenNav.route) },
+                                navigateToDetailScreen = { breedId -> navController.navigate(AppScreens.DetailsScreenNav.createRoute(breedId)) },
+                            )
+                        }
+                        composable(AppScreens.SearchScreenNav.route) {
+                            val searchViewModel = hiltViewModel<SearchViewmodel>()
+                            SearchScreen(
+                                viewModel = searchViewModel,
                                 navigateToBreedsScreen = { navController.navigate(AppScreens.BreedScreenNav.route) },
                                 navigateToSearchScreen = { navController.navigate(AppScreens.SearchScreenNav.route) },
                                 navigateToDetailScreen = { breedId -> navController.navigate(AppScreens.DetailsScreenNav.createRoute(breedId)) },
