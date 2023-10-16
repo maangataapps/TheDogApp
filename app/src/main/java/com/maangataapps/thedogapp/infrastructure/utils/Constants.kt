@@ -14,3 +14,7 @@ const val BREED = "breed"
 const val SEARCH = "search"
 const val DETAILS = "details"
 
+// Local Storage
+const val NEW_OBJECT_ID = 0L
+const val SEPARATOR = "|"
+
