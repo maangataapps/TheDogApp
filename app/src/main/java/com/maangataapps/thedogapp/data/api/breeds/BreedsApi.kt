@@ -14,4 +14,6 @@ interface BreedsApi {
     @GET("${BuildConfig.BASE_URL}$BREEDS")
     fun getBreedsList(@Query(LIMIT) limit: Int, @Query(PAGE) page: Int): Call<List<Breed>>
 
+    @GET("${BuildConfig.BASE_URL}$BREEDS")
+    fun getAllBreedsList(): Call<List<BreedResponse>>
 }

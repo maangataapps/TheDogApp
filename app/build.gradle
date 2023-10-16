@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
+    id 'io.objectbox'
     id 'kotlinx-serialization'
 }
 
@@ -114,6 +115,10 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:$rootProject.ext.paging3_version"
     implementation "androidx.paging:paging-compose:$rootProject.ext.paging3_version"
 
+    // ObjectBox
+    implementation "io.objectbox:objectbox-kotlin:$rootProject.ext.objectbox_version"
+    implementation "io.objectbox:objectbox-android:$rootProject.ext.objectbox_version"
+}
 
 kapt {
     correctErrorTypes = true

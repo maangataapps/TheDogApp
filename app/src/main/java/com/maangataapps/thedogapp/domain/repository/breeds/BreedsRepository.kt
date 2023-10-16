@@ -6,4 +6,5 @@ import com.maangataapps.thedogapp.domain.repository.RetrofitRepository
 
 interface BreedsRepository: RetrofitRepository {
     fun getBreedsList(): Pager<Int, Breed>
+    fun getAllBreedsListAndSaveItToLocal()
 }
